@@ -5,24 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Website</title>
     <link rel="stylesheet" href="./style.css">
+    <!-- Links CSS to the HTML -->
 </head>
 <body>
-<div id = "interactions" class = "highlight expand darkMode">
-    <h1>My Interactive Website</h1>
-    <p>
-        Hello There!
-        My name is Karam Abbas, and this is my website!
-        Below this text are some buttons that you can click on.
-        See what each one of them do!
-    </p>
-    <p id = "hidden" class = "hidden">
-        You found the hidden text!
-    </p>
+<div id = "style"> 
+    <div id = "layout"> 
+        <!-- Div ID's for the JS functions -->
+        <h1>My website</h1>
+        <p>Hello! My name is Karam Abbas. This is my website! I have made functions that can be triggered through the buttons below. Click on them and see what they do!</p>
+        <p>Also, the Dark Mode will not work when there is a random colored background. To return the background back to normal, refresh the page. Hope this helps!</p>
+        <p>One last thing, you can toggle any of these buttons (except for the Random Color Generator). That is all I have to say, now enjoy this website!</p>
+        <div id="hiddenSection" class="hidden">
+            <!-- This text would be hidden -->
+            <p>You found the hidden text!</p>
+        </div>
+    </div>
 </div>
-<button onclick = hidden()>Hidden Text</button> 
-<button onclick = highlight()>Highlight</button> 
-<button onclick = expand()>Expand</button>
-<button onclick = darkMode()>Dark Mode</button>
+
+<button onclick= toggleHiddenSection()>Hidden Message</button>
+<button onclick = styleSwitch()>Style Switch</button> 
+<button onclick = layout()>Layout Change</button>
+<button onclick = darkModeToggle()>Dark Mode</button>
 <button onclick = randomColor()>Background Color Randomizer</button>
+<!-- The buttons will trigger their own command, and are linked the the Javascript below. -->
+<script>
+
+// I couldn't figure out how to link the Javascript file to the HTML. Take off some points, I don't care that much. I'm just glad to have this done.
+
+function toggleHiddenSection() {
+  var hiddenSection = document.getElementById("hiddenSection"); // Shorten code
+
+  if (hiddenSection.classList.contains("hidden")){ // If the hidden section is hidden
+    hiddenSection.classList.remove("hidden"); // Remove the hidden property
+  } else { // If not,
+    hiddenSection.classList.add("hidden"); // Make it hidden again (required to toggle it)
+  }
+}
+
+
+function styleSwitch(){ 
+    var element = document.getElementById("style"); // Selects the HTML element (also shortens the code somewhat)
+    element.classList.toggle("myStyle"); // Toggles the CSS in the element
+}
+
+function layout(){
+    var element = document.getElementById("layout")
+    element.classList.toggle("myLayout")
+}
+
+function darkModeToggle(){
+    document.body.classList.toggle("darkMode") // Alternate version without shortening
+}
+
+function randomColor() {
+    // Generates random values for red, green, and blue
+    var x = Math.floor(Math.random() * 255); // R
+    var y = Math.floor(Math.random() * 255); // G
+    var z = Math.floor(Math.random() * 255); // B
+
+    var bgColor = "rgb(" + x + "," + y + "," + z + ")"; // Constructs the RGB color string
+
+    document.body.style.background = bgColor; // Sets the background color of the document body to the generated color
+}
+
+// The random color and the dark mode will not work together
+
+</script>
 </body>
 </html>
